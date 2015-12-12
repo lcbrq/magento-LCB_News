@@ -1,0 +1,15 @@
+<?php
+$news = $this->getNews();
+if ($news):
+    foreach ($news as $article):
+        ?>
+        <div class="news">
+            <h2><?php echo $article->getTitle(); ?></h2>
+            <img src="<?php echo $article->getImageUrl(); ?>" alt="<?php echo $article->getTitle(); ?>">
+            <div class="text">
+                <?php echo $article->getDescription(); ?>
+            </div>
+        </div>    
+        <?php
+    endforeach;
+endif;

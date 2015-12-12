@@ -1,0 +1,5 @@
+app/code/local/LCB/News                                  app/code/local/LCB/News
+app/design/adminhtml/default/default/layout/lcb_news.xml app/design/adminhtml/default/default/layout/lcb_news.xml
+app/design/frontend/base/default/layout/lcb_news.xml     app/design/frontend/base/default/layout/lcb_news.xml
+app/design/frontend/base/default/template/news           app/design/frontend/base/default/template/news
+app/etc/modules/LCB_News.xml                             app/etc/modules/LCB_News.xml
