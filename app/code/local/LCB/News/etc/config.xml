@@ -2,7 +2,7 @@
 <config>
     <modules>
         <LCB_News>
-            <version>1.0.0</version>
+            <version>1.0.1</version>
         </LCB_News>
     </modules>
     <global>
@@ -74,9 +74,9 @@
         </routers>
         <layout>
             <updates>
-                <faq>
+                <news>
                     <file>lcb_news.xml</file>
-                </faq>
+                </news>
             </updates>
         </layout>
     </frontend>

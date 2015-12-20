@@ -15,16 +15,21 @@ class LCB_News_IndexController extends Mage_Core_Controller_Front_Action {
         $this->loadLayout();
         $this->getLayout()->getBlock("head")->setTitle($this->__("News"));
         $breadcrumbs = $this->getLayout()->getBlock("breadcrumbs");
-        $breadcrumbs->addCrumb("home", array(
-            "label" => $this->__("Home Page"),
-            "title" => $this->__("Home Page"),
-            "link" => Mage::getBaseUrl()
-        ));
 
-        $breadcrumbs->addCrumb("faq", array(
-            "label" => $this->__("News"),
-            "title" => $this->__("News")
-        ));
+        if ($breadcrumbs) {
+            
+            $breadcrumbs->addCrumb("home", array(
+                "label" => $this->__("Home Page"),
+                "title" => $this->__("Home Page"),
+                "link" => Mage::getBaseUrl()
+            ));
+
+            $breadcrumbs->addCrumb("news", array(
+                "label" => $this->__("News"),
+                "title" => $this->__("News")
+            ));
+            
+        }
 
         $this->renderLayout();
     }

@@ -128,6 +128,49 @@ class LCB_News_Adminhtml_NewsController extends Mage_Adminhtml_Controller_Action
                 }
                 
                 //save image
+                
+                 //save banner
+                try {
+
+                    if ((bool) $post_data['banner']['delete'] == 1) {
+
+                        $post_data['banner'] = '';
+                    } else {
+
+                        unset($post_data['banner']);
+
+                        if (isset($_FILES)) {
+
+                            if ($_FILES['banner']['name']) {
+
+                                if ($this->getRequest()->getParam("id")) {
+                                    $model = Mage::getModel("news/news")->load($this->getRequest()->getParam("id"));
+                                    if ($model->getData('banner')) {
+                                        $io = new Varien_Io_File();
+                                        $io->rm(Mage::getBaseDir('media') . DS . implode(DS, explode('/', $model->getData('banner'))));
+                                    }
+                                }
+                                
+                                $path = Mage::getBaseDir('media') . DS . 'news' . DS . 'banners' . DS;
+                                $uploader = new Varien_File_Uploader('banner');
+                                $uploader->setAllowedExtensions(array('jpg', 'png', 'gif'));
+                                $uploader->setAllowRenameFiles(false);
+                                $uploader->setFilesDispersion(false);
+                                $destFile = $path . $_FILES['banner']['name'];
+                                $filename = $uploader->getNewFileName($destFile);
+                                $uploader->save($path, $filename);
+
+                                $post_data['banner'] = 'news/banners/' . $filename;
+                            }
+                        }
+                    }
+                } catch (Exception $e) {
+                    Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
+                    $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                    return;
+                }
+                
+                //save banner
 
                 $model = Mage::getModel("news/news")
                         ->addData($post_data)

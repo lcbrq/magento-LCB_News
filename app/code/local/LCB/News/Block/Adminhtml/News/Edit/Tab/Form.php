@@ -39,6 +39,12 @@ class LCB_News_Block_Adminhtml_News_Edit_Tab_Form extends Mage_Adminhtml_Block_W
             'note' => '(*.jpg, *.png, *.gif)',
         ));
 
+        $fieldset->addField('banner', 'image', array(
+            'label' => Mage::helper('news')->__('Banner'),
+            'name' => 'banner',
+            'note' => '(*.jpg, *.png, *.gif)',
+        ));
+        
         $fieldset->addField('date', 'date', array(
             'name' => 'date',
             'label' => Mage::helper('news')->__('Date'),
