@@ -31,9 +31,13 @@ class LCB_News_Block_Adminhtml_News_Edit_Tab_Form extends Mage_Adminhtml_Block_W
             "name" => "short_description",
         ));
 
-        $fieldset->addField("description", "textarea", array(
-            "label" => Mage::helper("news")->__("Description"),
-            "name" => "description",
+        $wysiwygConfig = Mage::getSingleton('cms/wysiwyg_config');
+        $fieldset->addField('description', 'editor', array(
+            'name' => 'description',
+            'label' => $this->__('Description'),
+            'title' => $this->__('Description'),
+            'wysiwyg' => true,
+            'config' => $wysiwygConfig,
         ));
 
         $fieldset->addField('image', 'image', array(

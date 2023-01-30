@@ -20,7 +20,7 @@ class LCB_News_Model_News extends Mage_Core_Model_Abstract
     public function getImageUrl()
     {
         if ($image = $this->getImage()) {
-            Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . $image;
+            return Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . $image;
         }
 
         return '';
