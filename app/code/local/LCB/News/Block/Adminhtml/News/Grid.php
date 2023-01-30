@@ -7,8 +7,8 @@
  * @package    LCB_News
  * @author     Silpion Tomasz Gregorczyk <tom@leftcurlybracket.com>
  */
-class LCB_News_Block_Adminhtml_News_Grid extends Mage_Adminhtml_Block_Widget_Grid {
-
+class LCB_News_Block_Adminhtml_News_Grid extends Mage_Adminhtml_Block_Widget_Grid
+{
     public function __construct()
     {
         parent::__construct();
@@ -66,9 +66,8 @@ class LCB_News_Block_Adminhtml_News_Grid extends Mage_Adminhtml_Block_Widget_Gri
         $this->getMassactionBlock()->addItem('remove_news', array(
             'label' => Mage::helper('news')->__('Remove News'),
             'url' => $this->getUrl('*/adminhtml_news/massRemove'),
-            'confirm' => Mage::helper('news')->__('Are you sure?')
+            'confirm' => Mage::helper('news')->__('Are you sure?'),
         ));
         return $this;
     }
-
 }

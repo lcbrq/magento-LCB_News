@@ -7,8 +7,8 @@
  * @package    LCB_News
  * @author     Silpion Tomasz Gregorczyk <tom@leftcurlybracket.com>
  */
-class LCB_News_Adminhtml_NewsController extends Mage_Adminhtml_Controller_Action {
-
+class LCB_News_Adminhtml_NewsController extends Mage_Adminhtml_Controller_Action
+{
     protected function _initAction()
     {
         $this->loadLayout()->_setActiveMenu("news/news")->_addBreadcrumb(Mage::helper("adminhtml")->__("News  Manager"), Mage::helper("adminhtml")->__("News Manager"));
@@ -49,7 +49,6 @@ class LCB_News_Adminhtml_NewsController extends Mage_Adminhtml_Controller_Action
 
     public function newAction()
     {
-
         $this->_title($this->__("News"));
         $this->_title($this->__("News"));
         $this->_title($this->__("New Item"));
@@ -72,7 +71,6 @@ class LCB_News_Adminhtml_NewsController extends Mage_Adminhtml_Controller_Action
         $this->_addBreadcrumb(Mage::helper("adminhtml")->__("News Manager"), Mage::helper("adminhtml")->__("News Manager"));
         $this->_addBreadcrumb(Mage::helper("adminhtml")->__("News Description"), Mage::helper("adminhtml")->__("News Description"));
 
-
         $this->_addContent($this->getLayout()->createBlock("news/adminhtml_news_edit"))->_addLeft($this->getLayout()->createBlock("news/adminhtml_news_edit_tabs"));
 
         $this->renderLayout();
@@ -80,27 +78,20 @@ class LCB_News_Adminhtml_NewsController extends Mage_Adminhtml_Controller_Action
 
     public function saveAction()
     {
-
         $post_data = $this->getRequest()->getPost();
 
         if ($post_data) {
-
             try {
 
                 //save image
                 try {
-
                     if ((bool) $post_data['image']['delete'] == 1) {
-
                         $post_data['image'] = '';
                     } else {
-
                         unset($post_data['image']);
 
                         if (isset($_FILES)) {
-
                             if ($_FILES['image']['name']) {
-
                                 if ($this->getRequest()->getParam("id")) {
                                     $model = Mage::getModel("news/news")->load($this->getRequest()->getParam("id"));
                                     if ($model->getData('image')) {
@@ -126,23 +117,18 @@ class LCB_News_Adminhtml_NewsController extends Mage_Adminhtml_Controller_Action
                     $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
                     return;
                 }
-                
+
                 //save image
-                
-                 //save banner
+
+                //save banner
                 try {
-
                     if ((bool) $post_data['banner']['delete'] == 1) {
-
                         $post_data['banner'] = '';
                     } else {
-
                         unset($post_data['banner']);
 
                         if (isset($_FILES)) {
-
                             if ($_FILES['banner']['name']) {
-
                                 if ($this->getRequest()->getParam("id")) {
                                     $model = Mage::getModel("news/news")->load($this->getRequest()->getParam("id"));
                                     if ($model->getData('banner')) {
@@ -150,7 +136,7 @@ class LCB_News_Adminhtml_NewsController extends Mage_Adminhtml_Controller_Action
                                         $io->rm(Mage::getBaseDir('media') . DS . implode(DS, explode('/', $model->getData('banner'))));
                                     }
                                 }
-                                
+
                                 $path = Mage::getBaseDir('media') . DS . 'news' . DS . 'banners' . DS;
                                 $uploader = new Varien_File_Uploader('banner');
                                 $uploader->setAllowedExtensions(array('jpg', 'png', 'gif'));
@@ -169,7 +155,7 @@ class LCB_News_Adminhtml_NewsController extends Mage_Adminhtml_Controller_Action
                     $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
                     return;
                 }
-                
+
                 //save banner
 
                 $model = Mage::getModel("news/news")
@@ -246,5 +232,4 @@ class LCB_News_Adminhtml_NewsController extends Mage_Adminhtml_Controller_Action
         $grid = $this->getLayout()->createBlock('news/adminhtml_news_grid');
         $this->_prepareDownloadResponse($fileName, $grid->getExcelFile($fileName));
     }
-
 }

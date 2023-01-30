@@ -7,8 +7,8 @@
  * @package    LCB_News
  * @author     Silpion Tomasz Gregorczyk <tom@leftcurlybracket.com>
  */
-class LCB_News_Model_News extends Mage_Core_Model_Abstract {
-
+class LCB_News_Model_News extends Mage_Core_Model_Abstract
+{
     protected function _construct()
     {
         $this->_init("news/news");
@@ -23,5 +23,4 @@ class LCB_News_Model_News extends Mage_Core_Model_Abstract {
     {
         return Mage::getUrl('news/article/index', array('id' => $this->getId()));
     }
-
 }

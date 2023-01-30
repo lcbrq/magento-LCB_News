@@ -7,11 +7,10 @@
  * @package    LCB_News
  * @author     Silpion Tomasz Gregorczyk <tom@leftcurlybracket.com>
  */
-class LCB_News_Block_Adminhtml_News_Edit extends Mage_Adminhtml_Block_Widget_Form_Container {
-
+class LCB_News_Block_Adminhtml_News_Edit extends Mage_Adminhtml_Block_Widget_Form_Container
+{
     public function __construct()
     {
-
         parent::__construct();
         $this->_objectId = "id";
         $this->_blockGroup = "news";
@@ -25,8 +24,6 @@ class LCB_News_Block_Adminhtml_News_Edit extends Mage_Adminhtml_Block_Widget_For
             "class" => "save",
                 ), -100);
 
-
-
         $this->_formScripts[] = "function saveAndContinueEdit(){
 				     editForm.submit($('edit_form').action+'back/edit/');
 				 }";
@@ -35,12 +32,9 @@ class LCB_News_Block_Adminhtml_News_Edit extends Mage_Adminhtml_Block_Widget_For
     public function getHeaderText()
     {
         if (Mage::registry("news_data") && Mage::registry("news_data")->getId()) {
-
             return Mage::helper("news")->__("Edit Item '%s'", $this->htmlEscape(Mage::registry("news_data")->getId()));
         } else {
-
             return Mage::helper("news")->__("Add Item");
         }
     }
-
 }

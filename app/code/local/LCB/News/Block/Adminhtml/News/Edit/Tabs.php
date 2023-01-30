@@ -7,8 +7,8 @@
  * @package    LCB_News
  * @author     Silpion Tomasz Gregorczyk <tom@leftcurlybracket.com>
  */
-class LCB_News_Block_Adminhtml_News_Edit_Tabs extends Mage_Adminhtml_Block_Widget_Tabs {
-
+class LCB_News_Block_Adminhtml_News_Edit_Tabs extends Mage_Adminhtml_Block_Widget_Tabs
+{
     public function __construct()
     {
         parent::__construct();
@@ -26,5 +26,4 @@ class LCB_News_Block_Adminhtml_News_Edit_Tabs extends Mage_Adminhtml_Block_Widge
         ));
         return parent::_beforeToHtml();
     }
-
 }
