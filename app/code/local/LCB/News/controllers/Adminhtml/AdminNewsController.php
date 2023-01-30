@@ -7,7 +7,7 @@
  * @package    LCB_News
  * @author     Silpion Tomasz Gregorczyk <tom@leftcurlybracket.com>
  */
-class LCB_News_Adminhtml_NewsController extends Mage_Adminhtml_Controller_Action
+class LCB_News_Adminhtml_AdminNewsController extends Mage_Adminhtml_Controller_Action
 {
     protected function _initAction()
     {

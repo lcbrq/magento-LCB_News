@@ -2,6 +2,7 @@
 
 $installer = $this;
 $installer->startSetup();
+
 $sql = <<<SQLTEXT
         
 DROP TABLE IF EXISTS `{$this->getTable('lcb_news')}`;

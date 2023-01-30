@@ -19,16 +19,16 @@
         <models>
             <news>
                 <class>LCB_News_Model</class>
-                <resourceModel>news_mysql4</resourceModel>
+                <resourceModel>lcb_news_resource</resourceModel>
             </news>
-            <news_mysql4>
-                <class>LCB_News_Model_Mysql4</class>
-                <entities>		  
+            <lcb_news_resource>
+                <class>LCB_News_Model_Resource</class>
+                <entities>
                     <news>
                         <table>lcb_news</table>
                     </news>
                 </entities>
-            </news_mysql4>
+            </lcb_news_resource>
         </models>
         <resources>
             <lcb_news_setup>
@@ -53,13 +53,13 @@
     </global>
     <admin>
         <routers>
-            <news>
-                <use>admin</use>
+            <adminhtml>
                 <args>
-                    <module>LCB_News</module>
-                    <frontName>admin_news</frontName>
+                    <modules>
+                        <LCB_News before="Mage_Adminhtml">LCB_News_Adminhtml</LCB_News>
+                    </modules>
                 </args>
-            </news>
+            </adminhtml>
         </routers>
     </admin>
     <frontend>
@@ -81,42 +81,6 @@
         </layout>
     </frontend>
     <adminhtml>
-        <menu>
-            <cms>
-                <children>
-                    <news module="news">
-                        <title>News</title>
-                        <sort_order>100</sort_order>
-                        <action>admin_news/adminhtml_news</action>
-                    </news>
-                </children>
-            </cms>
-        </menu>
-        <acl>
-            <resources>
-                <all>
-                    <title>Allow Everything</title>
-                </all>
-                <admin>
-                    <children>
-                        <cms>
-                            <children>
-                                <news translate="title" module="news">
-                                    <title>News</title>
-                                    <sort_order>1000</sort_order>
-                                    <children>
-                                        <news translate="title">
-                                            <title>Manage News</title>
-                                            <sort_order>0</sort_order>
-                                        </news>
-                                    </children>
-                                </news>
-                            </children>
-                        </cms>
-                    </children>
-                </admin>
-            </resources>
-        </acl>
         <layout>
             <updates>
                 <news>
