@@ -14,13 +14,44 @@ class LCB_News_Model_News extends Mage_Core_Model_Abstract
         $this->_init("news/news");
     }
 
+    /**
+     * @return string
+     */
     public function getImageUrl()
     {
-        return Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . $this->getImage();
+        if ($image = $this->getImage()) {
+            Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . $image;
+        }
+
+        return '';
     }
 
+    /**
+     * @return string
+     */
     public function getUrl()
     {
-        return Mage::getUrl('news/article/index', array('id' => $this->getId()));
+        if ($urlKey = $this->getUrlKey()) {
+            return Mage::getUrl('news') . $urlKey;
+        }
+
+        return Mage::getUrl('news/article/view', array('id' => $this->getId()));
+    }
+
+    /**
+     * Append created_at date
+     */
+    protected function _beforeSave()
+    {
+        if (!(bool) $this->getData('created_at')) {
+            $this->setData('created_at', Varien_Date::now());
+        }
+
+        if (!$this->getData('url_key')) {
+            $urlKey = Mage::getModel('catalog/product_url')->formatUrlKey($this->getTitle());
+            $this->setData('url_key', $urlKey);
+        }
+
+        return parent::_beforeSave();
     }
 }

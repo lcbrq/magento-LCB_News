@@ -4,12 +4,16 @@ if ($news):
     foreach ($news as $article):
         ?>
         <div class="news">
-            <h2><?php echo $article->getTitle(); ?></h2>
+            <h2>
+                <a href="<?php echo $article->getUrl() ?>">
+                    <?php echo $article->getTitle(); ?>
+                </a>
+            </h2>
             <img src="<?php echo $article->getImageUrl(); ?>" alt="<?php echo $article->getTitle(); ?>">
             <div class="text">
                 <?php echo $article->getDescription(); ?>
             </div>
-        </div>    
-        <?php
-    endforeach;
-endif;
+        </div>
+        <hr/>
+        <?php endforeach; ?>
+<?php endif; ?>

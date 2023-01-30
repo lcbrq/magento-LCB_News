@@ -9,7 +9,19 @@
  */
 class LCB_News_ArticleController extends Mage_Core_Controller_Front_Action
 {
-    public function IndexAction()
+    /**
+     * @deprecated since 1.1.0
+     */
+    public function indexAction()
+    {
+        $this->loadLayout();
+        $this->renderLayout();
+    }
+
+    /**
+     * @return void
+     */
+    public function viewAction()
     {
         $this->loadLayout();
         $this->renderLayout();

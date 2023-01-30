@@ -4,7 +4,7 @@
         <reference name="root">
             <action method="setTemplate">
                 <template>page/1column.phtml</template>
-            </action>   
+            </action>
         </reference>
         <reference name="content">
             <block type="news/index" name="news_index" template="news/index.phtml"/>
@@ -14,10 +14,20 @@
         <reference name="root">
             <action method="setTemplate">
                 <template>page/1column.phtml</template>
-            </action>   
+            </action>
         </reference>
         <reference name="content">
             <block type="news/article" name="news_article" template="news/article.phtml"/>
         </reference>
     </news_article_index>
+    <news_article_view>
+        <reference name="root">
+            <action method="setTemplate">
+                <template>page/1column.phtml</template>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="news/article" name="news_article" template="news/article.phtml"/>
+        </reference>
+    </news_article_view>
 </layout>

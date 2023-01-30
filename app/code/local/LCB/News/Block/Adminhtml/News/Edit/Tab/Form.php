@@ -21,6 +21,11 @@ class LCB_News_Block_Adminhtml_News_Edit_Tab_Form extends Mage_Adminhtml_Block_W
             'required' => true,
         ));
 
+        $fieldset->addField("url_key", "text", array(
+            "label" => Mage::helper("news")->__("Url Key"),
+            "name" => "url_key",
+        ));
+
         $fieldset->addField("short_description", "textarea", array(
             "label" => Mage::helper("news")->__("Short Description"),
             "name" => "short_description",
