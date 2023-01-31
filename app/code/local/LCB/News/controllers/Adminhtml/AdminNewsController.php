@@ -78,17 +78,17 @@ class LCB_News_Adminhtml_AdminNewsController extends Mage_Adminhtml_Controller_A
 
     public function saveAction()
     {
-        $post_data = $this->getRequest()->getPost();
+        $postData = $this->getRequest()->getPost();
 
-        if ($post_data) {
+        if ($postData) {
             try {
 
                 //save image
                 try {
-                    if ((bool) $post_data['image']['delete'] == 1) {
-                        $post_data['image'] = '';
+                    if (isset($postData['image']) && (bool) $postData['image']['delete'] == 1) {
+                        $postData['image'] = '';
                     } else {
-                        unset($post_data['image']);
+                        unset($postData['image']);
 
                         if (isset($_FILES)) {
                             if ($_FILES['image']['name']) {
@@ -108,7 +108,7 @@ class LCB_News_Adminhtml_AdminNewsController extends Mage_Adminhtml_Controller_A
                                 $filename = $uploader->getNewFileName($destFile);
                                 $uploader->save($path, $filename);
 
-                                $post_data['image'] = 'news/articles/' . $filename;
+                                $postData['image'] = 'news/articles/' . $filename;
                             }
                         }
                     }
@@ -122,10 +122,10 @@ class LCB_News_Adminhtml_AdminNewsController extends Mage_Adminhtml_Controller_A
 
                 //save banner
                 try {
-                    if ((bool) $post_data['banner']['delete'] == 1) {
-                        $post_data['banner'] = '';
+                    if (isset($postData['banner']) && (bool) $postData['banner']['delete'] == 1) {
+                        $postData['banner'] = '';
                     } else {
-                        unset($post_data['banner']);
+                        unset($postData['banner']);
 
                         if (isset($_FILES)) {
                             if ($_FILES['banner']['name']) {
@@ -146,7 +146,7 @@ class LCB_News_Adminhtml_AdminNewsController extends Mage_Adminhtml_Controller_A
                                 $filename = $uploader->getNewFileName($destFile);
                                 $uploader->save($path, $filename);
 
-                                $post_data['banner'] = 'news/banners/' . $filename;
+                                $postData['banner'] = 'news/banners/' . $filename;
                             }
                         }
                     }
@@ -159,7 +159,7 @@ class LCB_News_Adminhtml_AdminNewsController extends Mage_Adminhtml_Controller_A
                 //save banner
 
                 $model = Mage::getModel("news/news")
-                        ->addData($post_data)
+                        ->addData($postData)
                         ->setId($this->getRequest()->getParam("id"))
                         ->save();
 
