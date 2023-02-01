@@ -2,4 +2,4 @@
 
 <h2><?php echo $article->getTitle(); ?></h2>
 
-<?php echo $article->getDescription(); ?>
+<?php echo Mage::getModel('cms/template_filter')->filter($article->getDescription()); ?>

@@ -5,4 +5,7 @@
             <block type="news/adminhtml_news" name="news" />
         </reference>
     </adminhtml_adminnews_index>
+    <adminhtml_adminnews_edit>
+        <update handle="editor"/>
+    </adminhtml_adminnews_edit>
 </layout>
