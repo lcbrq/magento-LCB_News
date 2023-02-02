@@ -39,14 +39,45 @@ class LCB_News_Block_Adminhtml_News_Grid extends Mage_Adminhtml_Block_Widget_Gri
             "header" => Mage::helper("news")->__("Title"),
             "index" => "title",
         ));
+
         $this->addColumn("short_description", array(
             "header" => Mage::helper("news")->__("Short Description"),
             "index" => "short_description",
         ));
+
         $this->addColumn("description", array(
             "header" => Mage::helper("news")->__("Description"),
             "index" => "description",
         ));
+
+        $this->addColumn("enabled", array(
+            "header" => Mage::helper("news")->__("Active"),
+            "type" => "options",
+            "options" => Mage::getSingleton('adminhtml/system_config_source_yesno')->toArray(),
+            "index" => "enabled",
+        ));
+
+        $this->addColumn("visibility", array(
+            "header" => Mage::helper("news")->__("Visibility"),
+            "index" => "visibility",
+        ));
+
+        $this->addColumn('created_at', array(
+            'header'    => Mage::helper('news')->__('Created At'),
+            'align'     => 'left',
+            'width'     => '100px',
+            'type'      => 'datetime',
+            'index'     => 'created_at',
+        ));
+
+        $this->addColumn('updated_at', array(
+            'header'    => Mage::helper('news')->__('Updated At'),
+            'align'     => 'left',
+            'width'     => '100px',
+            'type'      => 'datetime',
+            'index'     => 'updated_at',
+        ));
+
         $this->addExportType('*/*/exportCsv', Mage::helper('sales')->__('CSV'));
         $this->addExportType('*/*/exportExcel', Mage::helper('sales')->__('Excel'));
 

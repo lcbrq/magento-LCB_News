@@ -13,7 +13,7 @@ class LCB_News_Block_Adminhtml_News_Edit_Tab_Form extends Mage_Adminhtml_Block_W
     {
         $form = new Varien_Data_Form();
         $this->setForm($form);
-        $fieldset = $form->addFieldset("news_form", array("legend" => Mage::helper("news")->__("Item information")));
+        $fieldset = $form->addFieldset('general', array("legend" => Mage::helper("news")->__("Item information")));
 
         $fieldset->addField("title", "text", array(
             "label" => Mage::helper("news")->__("Title"),
@@ -66,6 +66,12 @@ class LCB_News_Block_Adminhtml_News_Edit_Tab_Form extends Mage_Adminhtml_Block_W
             'format' => Mage::app()->getLocale()->getDateFormat(Mage_Core_Model_Locale::FORMAT_TYPE_SHORT),
             'value' => date(Mage::app()->getLocale()->getDateStrFormat(Mage_Core_Model_Locale::FORMAT_TYPE_SHORT), strtotime('today')),
             'required' => true,
+        ));
+
+        $fieldset->addField("enabled", "select", array(
+            "label" => Mage::helper("news")->__("Active"),
+            "name" => "enabled",
+            'values' => Mage::getSingleton('adminhtml/system_config_source_yesno')->toArray(),
         ));
 
         if (Mage::getSingleton("adminhtml/session")->getNewsData()) {

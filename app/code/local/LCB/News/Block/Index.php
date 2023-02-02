@@ -11,6 +11,7 @@ class LCB_News_Block_Index extends Mage_Core_Block_Template
 {
     public function getNews()
     {
-        return Mage::getModel('news/news')->getCollection();
+        return Mage::getModel('news/news')->getCollection()
+                ->addFieldToFilter('enabled', true);
     }
 }

@@ -23,6 +23,11 @@ class LCB_News_ArticleController extends Mage_Core_Controller_Front_Action
      */
     public function viewAction()
     {
+        $article = Mage::getModel('news/news')->load($this->getRequest()->getParam('id'));
+        if (!$article->getEnabled()) {
+            $this->_forward('noRoute');
+        }
+
         $this->loadLayout();
         $this->renderLayout();
     }

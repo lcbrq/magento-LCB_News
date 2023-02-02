@@ -9,6 +9,18 @@
  */
 class LCB_News_Model_News extends Mage_Core_Model_Abstract
 {
+    /**
+     * Prefix of model events names
+     *
+     * @var string
+     */
+    protected $_eventPrefix = 'news_article';
+
+    /**
+     * @var string
+     */
+    protected $_eventObject = 'article';
+
     protected function _construct()
     {
         $this->_init("news/news");
@@ -43,8 +55,10 @@ class LCB_News_Model_News extends Mage_Core_Model_Abstract
      */
     protected function _beforeSave()
     {
-        if (!(bool) $this->getData('created_at')) {
+        if (!$this->getData('created_at')) {
             $this->setData('created_at', Varien_Date::now());
+        } else {
+            $this->setData('updated_at', Varien_Date::now());
         }
 
         if (!$this->getData('url_key')) {
