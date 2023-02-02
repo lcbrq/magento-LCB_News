@@ -29,6 +29,35 @@ class LCB_News_ArticleController extends Mage_Core_Controller_Front_Action
         }
 
         $this->loadLayout();
+        $breadcrumbs = $this->getLayout()->getBlock("breadcrumbs");
+        if ($breadcrumbs) {
+            $breadcrumbs->addCrumb(
+                'home',
+                array(
+                'label' => $this->__('Homepage'),
+                'title' => $this->__('Homepage'),
+                'link' => Mage::getUrl(),
+            )
+            );
+
+            $breadcrumbs->addCrumb(
+                'news',
+                array(
+                'label' => $this->__('News'),
+                'title' => $this->__('News'),
+                'link' => Mage::getUrl('news'),
+            )
+            );
+
+            $breadcrumbs->addCrumb(
+                'article',
+                array(
+                "label" => $article->getTitle(),
+                "title" => $article->getTitle(),
+            )
+            );
+        }
+
         $this->renderLayout();
     }
 }

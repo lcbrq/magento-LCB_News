@@ -27,7 +27,9 @@
             </action>
         </reference>
         <reference name="content">
-            <block type="news/article" name="news_article" template="news/article.phtml"/>
+            <block type="news/article" name="news_article" template="news/article.phtml">
+                <block type="page/html_breadcrumbs" name="breadcrumbs" as="breadcrumbs"/>
+            </block>
         </reference>
     </news_article_view>
 </layout>
