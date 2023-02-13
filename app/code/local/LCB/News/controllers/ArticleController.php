@@ -34,8 +34,8 @@ class LCB_News_ArticleController extends Mage_Core_Controller_Front_Action
             $breadcrumbs->addCrumb(
                 'home',
                 array(
-                'label' => $this->__('Homepage'),
-                'title' => $this->__('Homepage'),
+                'label' => $this->__('Home'),
+                'title' => $this->__('Home'),
                 'link' => Mage::getUrl(),
             )
             );

@@ -17,8 +17,8 @@ class LCB_News_IndexController extends Mage_Core_Controller_Front_Action
 
         if ($breadcrumbs) {
             $breadcrumbs->addCrumb("home", array(
-                "label" => $this->__("Home Page"),
-                "title" => $this->__("Home Page"),
+                "label" => $this->__("Home"),
+                "title" => $this->__("Home"),
                 "link" => Mage::getBaseUrl(),
             ));
 
