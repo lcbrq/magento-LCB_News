@@ -158,6 +158,15 @@ class LCB_News_Adminhtml_AdminNewsController extends Mage_Adminhtml_Controller_A
 
                 //save banner
 
+                if (isset($postData['stores'])) {
+                    if (in_array('0', $postData['stores'])) {
+                        $postData['store_id'] = '0';
+                    } else {
+                        $postData['store_id'] = join(",", $postData['stores']);
+                    }
+                    unset($postData['stores']);
+                }
+
                 $model = Mage::getModel("news/news")
                         ->addData($postData)
                         ->setId($this->getRequest()->getParam("id"))

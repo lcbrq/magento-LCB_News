@@ -22,7 +22,15 @@ class LCB_News_Block_Adminhtml_News_Grid extends Mage_Adminhtml_Block_Widget_Gri
     {
         $collection = Mage::getModel("news/news")->getCollection();
         $this->setCollection($collection);
-        return parent::_prepareCollection();
+        parent::_prepareCollection();
+        foreach ($collection as $link) {
+            if ($link->getStoreId() && $link->getStoreId() != 0) {
+                $link->setStoreId(explode(',', $link->getStoreId()));
+            } else {
+                $link->setStoreId(array('0'));
+            }
+        }
+        return $this;
     }
 
     protected function _prepareColumns()
@@ -61,6 +69,18 @@ class LCB_News_Block_Adminhtml_News_Grid extends Mage_Adminhtml_Block_Widget_Gri
             "header" => Mage::helper("news")->__("Visibility"),
             "index" => "visibility",
         ));
+
+        if (!Mage::app()->isSingleStoreMode()) {
+            $this->addColumn('store_id', array(
+                'header' => Mage::helper('news')->__('Store View'),
+                'index' => 'store_id',
+                'type' => 'store',
+                'store_all' => true,
+                'store_view' => true,
+                'sortable' => true,
+                'filter_condition_callback' => array($this, '_filterStoreCondition'),
+            ));
+        }
 
         $this->addColumn('created_at', array(
             'header'    => Mage::helper('news')->__('Created At'),
