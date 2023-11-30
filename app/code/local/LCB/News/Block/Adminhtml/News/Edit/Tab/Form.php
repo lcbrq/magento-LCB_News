@@ -74,6 +74,21 @@ class LCB_News_Block_Adminhtml_News_Edit_Tab_Form extends Mage_Adminhtml_Block_W
             'values' => Mage::getSingleton('adminhtml/system_config_source_yesno')->toArray(),
         ));
 
+        if (!Mage::app()->isSingleStoreMode()) {
+            $fieldset->addField('store_id', 'multiselect', array(
+                'name' => 'stores[]',
+                'label' => Mage::helper('news')->__('Store View'),
+                'title' => Mage::helper('news')->__('Store View'),
+                'required' => true,
+                'values' => Mage::getSingleton('adminhtml/system_store')->getStoreValuesForForm(false, true),
+            ));
+        } else {
+            $fieldset->addField('store_id', 'hidden', array(
+                'name' => 'stores[]',
+                'value' => Mage::app()->getStore(true)->getId(),
+            ));
+        }
+
         if (Mage::getSingleton("adminhtml/session")->getNewsData()) {
             $form->setValues(Mage::getSingleton("adminhtml/session")->getNewsData());
             Mage::getSingleton("adminhtml/session")->setNewsData(null);
