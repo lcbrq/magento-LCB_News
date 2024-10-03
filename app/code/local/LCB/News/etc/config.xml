@@ -119,4 +119,9 @@
             </routers>
         </web>
     </default>
+            <news>
+            <display>
+                <limit>0</limit>
+            </display>
+        </news>
 </config>
