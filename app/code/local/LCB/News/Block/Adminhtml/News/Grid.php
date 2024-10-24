@@ -78,7 +78,6 @@ class LCB_News_Block_Adminhtml_News_Grid extends Mage_Adminhtml_Block_Widget_Gri
                 'store_all' => true,
                 'store_view' => true,
                 'sortable' => true,
-                'filter_condition_callback' => array($this, '_filterStoreCondition'),
             ));
         }
 
