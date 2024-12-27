@@ -20,11 +20,20 @@ class LCB_News_Block_Index extends Mage_Core_Block_Template
         }
     }
 
+    /**
+     * @param int $limit
+     * @return $this
+     */
     public function setNewsLimit($limit)
     {
         $this->_newsLimit = $limit;
+
+        return $this;
     }
 
+    /**
+     * @return type
+     */
     public function getNews()
     {
         $collection = Mage::getModel('news/news')->getCollection()
@@ -36,12 +45,7 @@ class LCB_News_Block_Index extends Mage_Core_Block_Template
         }
 
         if (!Mage::app()->isSingleStoreMode()) {
-            $collection->addFieldToFilter('store_id', array(
-                array('finset' => '0'),
-                array('finset' => Mage::app()->getStore()->getStoreId()),
-            ));
-        } else {
-            $collection->addFieldToFilter('store_id', null);
+            $collection->addStoreFilter();
         }
 
         return $collection;

@@ -4,6 +4,7 @@ Magento 1 (OpenMage) plugin for CMS news management
 
 ## Changelog
 
+- 1.3.3 - Allow to filter news collection by store
 - 1.3.2 - Code format and add composer declaration
 - 1.3.1 - Allow to limit articles collection
 - 1.3.0 - Add store level visibility
