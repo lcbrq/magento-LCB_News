@@ -82,7 +82,6 @@ class LCB_News_Adminhtml_AdminNewsController extends Mage_Adminhtml_Controller_A
 
         if ($postData) {
             try {
-
                 //save image
                 try {
                     if (isset($postData['image']) && (bool) $postData['image']['delete'] == 1) {

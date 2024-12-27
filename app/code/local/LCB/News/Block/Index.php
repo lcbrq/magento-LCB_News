@@ -30,11 +30,11 @@ class LCB_News_Block_Index extends Mage_Core_Block_Template
         $collection = Mage::getModel('news/news')->getCollection()
             ->addFieldToFilter('enabled', true)
             ->setOrder('date', 'DESC');
-    
+
         if ($this->_newsLimit > 0) {
             $collection->setPageSize($this->_newsLimit);
         }
-    
+
         if (!Mage::app()->isSingleStoreMode()) {
             $collection->addFieldToFilter('store_id', array(
                 array('finset' => '0'),
@@ -43,10 +43,7 @@ class LCB_News_Block_Index extends Mage_Core_Block_Template
         } else {
             $collection->addFieldToFilter('store_id', null);
         }
-    
+
         return $collection;
     }
 }
-
-
-
