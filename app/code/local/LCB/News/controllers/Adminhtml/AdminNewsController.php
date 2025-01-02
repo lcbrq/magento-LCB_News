@@ -9,12 +9,26 @@
  */
 class LCB_News_Adminhtml_AdminNewsController extends Mage_Adminhtml_Controller_Action
 {
+    /**
+     * @inheritDoc
+     */
+    protected function _isAllowed()
+    {
+        return Mage::getSingleton('admin/session')->isAllowed('cms/news/news');
+    }
+
+    /**
+     * @return $this
+     */
     protected function _initAction()
     {
         $this->loadLayout()->_setActiveMenu("news/news")->_addBreadcrumb(Mage::helper("adminhtml")->__("News  Manager"), Mage::helper("adminhtml")->__("News Manager"));
         return $this;
     }
 
+    /**
+     * @return void
+     */
     public function indexAction()
     {
         $this->_title($this->__("News"));
@@ -24,6 +38,9 @@ class LCB_News_Adminhtml_AdminNewsController extends Mage_Adminhtml_Controller_A
         $this->renderLayout();
     }
 
+    /**
+     * @return void
+     */
     public function editAction()
     {
         $this->_title($this->__("News"));
@@ -47,6 +64,9 @@ class LCB_News_Adminhtml_AdminNewsController extends Mage_Adminhtml_Controller_A
         }
     }
 
+    /**
+     * @return void
+     */
     public function newAction()
     {
         $this->_title($this->__("News"));
@@ -76,6 +96,9 @@ class LCB_News_Adminhtml_AdminNewsController extends Mage_Adminhtml_Controller_A
         $this->renderLayout();
     }
 
+    /**
+     * @return void
+     */
     public function saveAction()
     {
         $postData = $this->getRequest()->getPost();
@@ -187,6 +210,7 @@ class LCB_News_Adminhtml_AdminNewsController extends Mage_Adminhtml_Controller_A
                 return;
             }
         }
+
         $this->_redirect("*/*/");
     }
 
@@ -206,6 +230,9 @@ class LCB_News_Adminhtml_AdminNewsController extends Mage_Adminhtml_Controller_A
         $this->_redirect("*/*/");
     }
 
+    /**
+     * @return void
+     */
     public function massRemoveAction()
     {
         try {
@@ -222,7 +249,7 @@ class LCB_News_Adminhtml_AdminNewsController extends Mage_Adminhtml_Controller_A
     }
 
     /**
-     * Export order grid to CSV format
+     * Export news grid to CSV format
      */
     public function exportCsvAction()
     {
@@ -232,7 +259,7 @@ class LCB_News_Adminhtml_AdminNewsController extends Mage_Adminhtml_Controller_A
     }
 
     /**
-     *  Export order grid to Excel XML format
+     *  Export news grid to Excel XML format
      */
     public function exportExcelAction()
     {
