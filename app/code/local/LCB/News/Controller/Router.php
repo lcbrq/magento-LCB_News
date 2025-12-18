@@ -32,7 +32,7 @@ class LCB_News_Controller_Router extends Mage_Core_Controller_Varien_Router_Stan
             $front = $this->getFront();
             $path = trim($request->getPathInfo(), '/');
 
-            foreach (self::MODULE_PATHS as $newsPath) {
+            foreach ($this->_getModulePaths() as $newsPath) {
                 if (substr($path, 0, strlen($newsPath)) === $newsPath) {
                     $pathElements = explode(DS, $path);
                     if (count($pathElements) === 2 && !empty($pathElements[1])) {
@@ -57,5 +57,13 @@ class LCB_News_Controller_Router extends Mage_Core_Controller_Varien_Router_Stan
         }
 
         return false;
+    }
+
+    /**
+     * @return array
+     */
+    protected function _getModulePaths()
+    {
+        return self::MODULE_PATHS;
     }
 }
