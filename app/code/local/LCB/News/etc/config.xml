@@ -2,7 +2,7 @@
 <config>
     <modules>
         <LCB_News>
-            <version>1.3.5</version>
+            <version>1.3.6</version>
         </LCB_News>
     </modules>
     <global>
@@ -50,6 +50,16 @@
                 </connection>
             </lcb_news_read>
         </resources>
+        <events>
+             <fpc_observer_collect_cache_tags>
+                <observers>
+                    <lcb_news_fpc_observer_collect_cache_tags>
+                        <class>news/observer</class>
+                        <method>fpcObserverCollectCacheTags</method>
+                    </lcb_news_fpc_observer_collect_cache_tags>
+                </observers>
+            </fpc_observer_collect_cache_tags>
+        </events>
     </global>
     <admin>
         <routers>
@@ -119,9 +129,9 @@
             </routers>
         </web>
     </default>
-            <news>
-            <display>
-                <limit>0</limit>
-            </display>
-        </news>
+    <news>
+        <display>
+            <limit>0</limit>
+        </display>
+    </news>
 </config>

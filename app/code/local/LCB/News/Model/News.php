@@ -21,6 +21,11 @@ class LCB_News_Model_News extends Mage_Core_Model_Abstract
      */
     protected $_eventObject = 'article';
 
+    /**
+     * @inheritDoc
+     */
+    protected $_cacheTag = ['LCB_NEWS_INDEX'];
+
     protected function _construct()
     {
         $this->_init('news/news');
@@ -67,5 +72,17 @@ class LCB_News_Model_News extends Mage_Core_Model_Abstract
         }
 
         return parent::_beforeSave();
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function cleanModelCache()
+    {
+        if (Mage::helper('core')->isModuleEnabled('Lesti_Fpc')) {
+            Mage::getSingleton('fpc/fpc')->clean('LCB_NEWS_INDEX');
+        }
+
+        return parent::cleanModelCache();
     }
 }
