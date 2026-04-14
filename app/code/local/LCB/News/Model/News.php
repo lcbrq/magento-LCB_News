@@ -67,7 +67,7 @@ class LCB_News_Model_News extends Mage_Core_Model_Abstract
         }
 
         if (!$this->getData('url_key')) {
-            $urlKey = Mage::getModel('catalog/product_url')->formatUrlKey($this->getTitle());
+            $urlKey = Mage::getModel('catalog/product_url')->setLocale(Mage::app()->getLocale()->getLocaleCode())->formatUrlKey($this->getTitle());
             $this->setData('url_key', $urlKey);
         }
 

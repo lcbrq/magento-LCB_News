@@ -4,6 +4,7 @@ Magento 1 (OpenMage) plugin for CMS news management
 
 ## Changelog
 
+- 1.3.7 - Fix issue with OpenMage 20.11 slugger localization
 - 1.3.6 - Clear Lesti_Fpc news listing cache after article save
 - 1.3.5 - Allow to rewrite router paths for localization
 - 1.3.4 - Add missing ACL
