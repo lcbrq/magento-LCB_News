@@ -12,10 +12,7 @@ class LCB_News_Adminhtml_AdminNewsController extends Mage_Adminhtml_Controller_A
     /**
      * @inheritDoc
      */
-    protected function _isAllowed()
-    {
-        return Mage::getSingleton('admin/session')->isAllowed('cms/news/news');
-    }
+    public const ADMIN_RESOURCE = 'cms/news/news';
 
     /**
      * @return $this
