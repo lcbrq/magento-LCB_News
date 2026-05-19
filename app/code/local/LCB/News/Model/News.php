@@ -62,13 +62,12 @@ class LCB_News_Model_News extends Mage_Core_Model_Abstract
     {
         if (!$this->getData('created_at')) {
             $this->setData('created_at', Varien_Date::now());
+            if (!$this->getData('url_key')) {
+                $urlKey = Mage::getModel('catalog/product_url')->setLocale(Mage::app()->getLocale()->getLocaleCode())->formatUrlKey($this->getTitle());
+                $this->setData('url_key', $urlKey);
+            }
         } else {
             $this->setData('updated_at', Varien_Date::now());
-        }
-
-        if (!$this->getData('url_key')) {
-            $urlKey = Mage::getModel('catalog/product_url')->setLocale(Mage::app()->getLocale()->getLocaleCode())->formatUrlKey($this->getTitle());
-            $this->setData('url_key', $urlKey);
         }
 
         return parent::_beforeSave();

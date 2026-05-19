@@ -15,6 +15,10 @@ class LCB_News_Block_Adminhtml_News_Edit_Tab_Form extends Mage_Adminhtml_Block_W
         $this->setForm($form);
         $fieldset = $form->addFieldset('general', array("legend" => Mage::helper("news")->__("Item information")));
 
+        $fieldset->addField('created_at', 'hidden', array(
+            'name' => 'created_at',
+        ));
+
         $fieldset->addField("enabled", "select", array(
             "label" => Mage::helper("news")->__("Active"),
             "name" => "enabled",

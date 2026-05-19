@@ -48,6 +48,11 @@ class LCB_News_Block_Adminhtml_News_Grid extends Mage_Adminhtml_Block_Widget_Gri
             "index" => "title",
         ));
 
+        $this->addColumn("url_key", array(
+            "header" => Mage::helper("news")->__("Url Key"),
+            "index" => "url_key",
+        ));
+
         $this->addColumn("short_description", array(
             "header" => Mage::helper("news")->__("Short Description"),
             "index" => "short_description",
