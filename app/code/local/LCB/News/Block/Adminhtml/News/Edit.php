@@ -32,7 +32,7 @@ class LCB_News_Block_Adminhtml_News_Edit extends Mage_Adminhtml_Block_Widget_For
     public function getHeaderText()
     {
         if (Mage::registry("news_data") && Mage::registry("news_data")->getId()) {
-            return Mage::helper("news")->__("Edit Item '%s'", $this->htmlEscape(Mage::registry("news_data")->getId()));
+            return Mage::helper("news")->__("Edit Item '%s'", $this->escapeHtml(Mage::registry("news_data")->getId()));
         } else {
             return Mage::helper("news")->__("Add Item");
         }
