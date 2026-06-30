@@ -2,7 +2,7 @@
     "name": "lcbrq/openmage-news",
     "license": ["MIT"],
     "type": "magento-module",
-    "version": "1.4.0",
+    "version": "1.4.1",
     "description": "Magento 1 (OpenMage) plugin for CMS news management",
     "extra": {
         "magento-root-dir": "test/"

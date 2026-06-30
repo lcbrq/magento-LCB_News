@@ -4,6 +4,7 @@ Magento 1 (OpenMage) plugin for CMS news management
 
 ## Changelog
 
+- 1.4.1 - Extend admin form and fix issue with filenames upload
 - 1.4.0 - Fix issue with OpenMage 20.17 htmlEscape usage
 - 1.3.9 - Allow to remove news entry url_key
 - 1.3.8 - Fix issue with OpenMage 20.17 admin _isAllowed check

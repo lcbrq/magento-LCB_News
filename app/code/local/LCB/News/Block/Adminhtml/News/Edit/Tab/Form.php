@@ -13,7 +13,10 @@ class LCB_News_Block_Adminhtml_News_Edit_Tab_Form extends Mage_Adminhtml_Block_W
     {
         $form = new Varien_Data_Form();
         $this->setForm($form);
-        $fieldset = $form->addFieldset('general', array("legend" => Mage::helper("news")->__("Item information")));
+        $fieldset = $form->addFieldset('general', array(
+            "legend" => Mage::helper("news")->__("Item information"),
+            'class' => 'fieldset-wide',
+        ));
 
         $fieldset->addField('created_at', 'hidden', array(
             'name' => 'created_at',
@@ -29,16 +32,19 @@ class LCB_News_Block_Adminhtml_News_Edit_Tab_Form extends Mage_Adminhtml_Block_W
             "label" => Mage::helper("news")->__("Title"),
             "name" => "title",
             'required' => true,
+            'style' => 'width:100%;',
         ));
 
         $fieldset->addField("url_key", "text", array(
             "label" => Mage::helper("news")->__("Url Key"),
             "name" => "url_key",
+            'style' => 'width:100%;',
         ));
 
         $fieldset->addField("short_description", "textarea", array(
             "label" => Mage::helper("news")->__("Short Description"),
             "name" => "short_description",
+            'style' => 'width:100%;',
         ));
 
         $wysiwygConfig = Mage::getSingleton('cms/wysiwyg_config')->getConfig(
@@ -55,6 +61,7 @@ class LCB_News_Block_Adminhtml_News_Edit_Tab_Form extends Mage_Adminhtml_Block_W
             'title' => $this->__('Description'),
             'wysiwyg' => true,
             'config' => $wysiwygConfig,
+            'style' => 'width:100%;',
         ));
 
         $fieldset->addField('image', 'image', array(

@@ -123,7 +123,8 @@ class LCB_News_Adminhtml_AdminNewsController extends Mage_Adminhtml_Controller_A
                                 $uploader->setAllowedExtensions(array('jpg', 'png', 'gif'));
                                 $uploader->setAllowRenameFiles(false);
                                 $uploader->setFilesDispersion(false);
-                                $destFile = $path . $_FILES['image']['name'];
+                                $normalizedImageName = Mage_Core_Model_File_Uploader::getCorrectFileName($_FILES['image']['name']);
+                                $destFile = $path . $normalizedImageName;
                                 $filename = $uploader->getNewFileName($destFile);
                                 $uploader->save($path, $filename);
 
@@ -161,7 +162,8 @@ class LCB_News_Adminhtml_AdminNewsController extends Mage_Adminhtml_Controller_A
                                 $uploader->setAllowedExtensions(array('jpg', 'png', 'gif'));
                                 $uploader->setAllowRenameFiles(false);
                                 $uploader->setFilesDispersion(false);
-                                $destFile = $path . $_FILES['banner']['name'];
+                                $normalizedBannerName = Mage_Core_Model_File_Uploader::getCorrectFileName($_FILES['banner']['name']);
+                                $destFile = $path . $normalizedBannerName;
                                 $filename = $uploader->getNewFileName($destFile);
                                 $uploader->save($path, $filename);
 
