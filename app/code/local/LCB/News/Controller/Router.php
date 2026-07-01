@@ -34,9 +34,10 @@ class LCB_News_Controller_Router extends Mage_Core_Controller_Varien_Router_Stan
 
             foreach ($this->_getModulePaths() as $newsPath) {
                 if (substr($path, 0, strlen($newsPath)) === $newsPath) {
-                    $pathElements = explode(DS, $path);
-                    if (count($pathElements) === 2 && !empty($pathElements[1])) {
-                        $possibleArticleUrlKey = $pathElements[1];
+                    $pathElements = explode('/', $path);
+                    if (!empty($pathElements[1])) {
+                        unset($pathElements[0]);
+                        $possibleArticleUrlKey = implode('/', $pathElements);
                         $article = Mage::getModel('news/news')
                                 ->getCollection()
                                 ->addFieldToFilter('url_key', $possibleArticleUrlKey)
@@ -45,7 +46,7 @@ class LCB_News_Controller_Router extends Mage_Core_Controller_Varien_Router_Stan
                             $request->setModuleName('news');
                             $request->setControllerName('article');
                             $request->setActionName('view');
-                            $request->setControllerModule('library');
+                            $request->setControllerModule('news');
                             $request->setParam('id', $articleId);
                             return true;
                         }

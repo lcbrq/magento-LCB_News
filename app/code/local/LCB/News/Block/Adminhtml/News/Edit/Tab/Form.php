@@ -39,6 +39,7 @@ class LCB_News_Block_Adminhtml_News_Edit_Tab_Form extends Mage_Adminhtml_Block_W
             "label" => Mage::helper("news")->__("Url Key"),
             "name" => "url_key",
             'style' => 'width:100%;',
+            'class' => 'validate-identifier',
         ));
 
         $fieldset->addField("short_description", "textarea", array(
